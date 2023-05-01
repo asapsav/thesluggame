@@ -16,7 +16,6 @@ public class SlugWanderAI : MonoBehaviour
 
     private AIStates curStates = AIStates.Idle;
     private float waitTimer = 0.0f;
-    private float spawnTimer = 0f;
 
     public bool isDisabled;
 
@@ -27,6 +26,20 @@ public class SlugWanderAI : MonoBehaviour
 
     private void Update()
     {
+        Ray clickPos = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(clickPos, out var hit) && Input.GetMouseButtonDown(1))
+        {
+            Debug.Log(hit.transform.name);
+            if (hit.transform.CompareTag("Slug"))
+            {
+                GameObject fuckOff = hit.transform.gameObject;
+                fuckOff.GetComponent<NavMeshAgent>().isStopped = true;
+            }
+        }
+        if (isDisabled)
+        {
+            return;
+        }
         switch (curStates)
         {
             case AIStates.Idle:
@@ -36,7 +49,7 @@ public class SlugWanderAI : MonoBehaviour
                 DoWander();
                 break;
             default:
-                Debug.LogError("GUH?!");
+                Debug.LogError("How did you get here?");
                 break;
         }
     }
@@ -63,7 +76,7 @@ public class SlugWanderAI : MonoBehaviour
 
     Vector3 RandomNavSphere(Vector3 origin, float distance, LayerMask layerMask)
     {
-        Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * distance;
+        Vector3 randomDirection = Random.insideUnitSphere * distance;
 
         randomDirection += origin;
 

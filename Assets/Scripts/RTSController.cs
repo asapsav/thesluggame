@@ -8,6 +8,10 @@ public class RTSController : MonoBehaviour
     public NavMeshAgent antAgent;
     public bool isDisabled;
 
+    public GameObject biostaffUI;
+
+    public GameObject currentSlug;
+
     // Update is called once per frame
     void Update()
     {
@@ -18,6 +22,16 @@ public class RTSController : MonoBehaviour
             {
                 antAgent.SetDestination(hitInfo.point);
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Slug")
+        {
+            isDisabled = true;
+            biostaffUI.SetActive(true);
+            currentSlug = other.gameObject;
         }
     }
 }
