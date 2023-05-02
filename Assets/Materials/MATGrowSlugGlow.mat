@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MATSlugGlow
+  m_Name: MATGrowSlugGlow
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ValidKeywords:
   - _EMISSION
@@ -123,8 +123,8 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 0
     m_Colors:
-    - _BaseColor: {r: 0, g: 1, b: 0.16269231, a: 1}
-    - _Color: {r: 0, g: 1, b: 0.16269228, a: 1}
-    - _EmissionColor: {r: 0.37508282, g: 5.313673, b: 0, a: 1}
+    - _BaseColor: {r: 0.1844883, g: 1, b: 0, a: 1}
+    - _Color: {r: 0.18448827, g: 1, b: 0, a: 1}
+    - _EmissionColor: {r: 0.23529412, g: 1.4980392, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

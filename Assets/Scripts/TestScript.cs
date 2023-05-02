@@ -19,4 +19,10 @@ public class TestScript : MonoBehaviour
         currentSlug.GetComponent<NavMeshAgent>().isStopped = false;
         this.gameObject.SetActive(false);
     }
+
+    public void InjectSlug(int slugType)
+    {
+        GameObject currentSlug = Ant.GetComponent<RTSController>().currentSlug;
+        currentSlug.GetComponent<SlugWanderAI>().ChangeSlug(slugType);
+    }
 }

@@ -19,9 +19,20 @@ public class SlugWanderAI : MonoBehaviour
 
     public bool isDisabled;
 
+    public SlugTypes[] slugs;
+    public SlugTypes currentSlug;
+
+    public Material[] slugGlows;
+    private Material currentMaterial;
+
+    public GameObject slugInternal;
+
     private void Start()
     {
         slugAgent = GetComponent<NavMeshAgent>();
+        currentSlug = slugs[0];
+        currentMaterial = slugGlows[0];
+        slugInternal.GetComponent<MeshRenderer>().material = currentMaterial;
     }
 
     private void Update()
@@ -85,5 +96,12 @@ public class SlugWanderAI : MonoBehaviour
         NavMesh.SamplePosition(randomDirection, out navHit, distance, layerMask);
 
         return navHit.position;
+    }
+
+    public void ChangeSlug(int slugType)
+    {
+        currentSlug = slugs[slugType];
+        currentMaterial = slugGlows[slugType];
+        slugInternal.GetComponent<MeshRenderer>().material = currentMaterial;
     }
 }
