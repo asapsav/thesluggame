@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e10967cc63258b14882eb59364782cf9, type: 3}
   m_Name: ArmoredSlug
   m_EditorClassIdentifier: 
-  slugType: 
-  health: 0
+  slugType: Armored Slug
+  health: 50
   isArmored: 0
+  unitCost: 150

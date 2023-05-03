@@ -26,6 +26,11 @@ public class SlugWanderAI : MonoBehaviour
     private Material currentMaterial;
 
     public GameObject slugInternal;
+    public GameObject Spawner;
+    public GameObject dropPrefab;
+    private MorcellSpawner morcellSpawner;
+
+    private bool slugDrop = false;
 
     private void Start()
     {
@@ -33,6 +38,7 @@ public class SlugWanderAI : MonoBehaviour
         currentSlug = slugs[0];
         currentMaterial = slugGlows[0];
         slugInternal.GetComponent<MeshRenderer>().material = currentMaterial;
+        morcellSpawner = GetComponentInChildren<MorcellSpawner>();
     }
 
     private void Update()
@@ -46,6 +52,11 @@ public class SlugWanderAI : MonoBehaviour
                 GameObject fuckOff = hit.transform.gameObject;
                 fuckOff.GetComponent<NavMeshAgent>().isStopped = true;
             }
+        }
+        if (slugDrop == true)
+        {
+            StartCoroutine(SlugGrowTimer());
+            slugDrop = false;
         }
         if (isDisabled)
         {
@@ -63,6 +74,13 @@ public class SlugWanderAI : MonoBehaviour
                 Debug.LogError("How did you get here?");
                 break;
         }
+    }
+
+    IEnumerator SlugGrowTimer()
+    {
+        yield return new WaitForSeconds(25f);
+        Transform dropTransform = Spawner.GetComponent<Transform>();
+        Instantiate(dropPrefab, dropTransform.position, dropTransform.rotation);
     }
 
     private void DoIdle()
@@ -103,5 +121,11 @@ public class SlugWanderAI : MonoBehaviour
         currentSlug = slugs[slugType];
         currentMaterial = slugGlows[slugType];
         slugInternal.GetComponent<MeshRenderer>().material = currentMaterial;
+        Debug.Log(currentSlug.slugType);
+        if (slugType == 1)
+        {
+            morcellSpawner.isGrowSlug = true;
+            slugDrop = true;
+        }
     }
 }

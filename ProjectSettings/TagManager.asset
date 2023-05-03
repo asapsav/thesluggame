@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Slug
   - Ant
+  - VLP1
   layers:
   - Default
   - TransparentFX

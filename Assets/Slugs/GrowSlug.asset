@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e10967cc63258b14882eb59364782cf9, type: 3}
   m_Name: GrowSlug
   m_EditorClassIdentifier: 
-  slugType: 
-  health: 0
+  slugType: Grow Slug
+  health: 10
   isArmored: 0
+  unitCost: 50
