@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     }
 
     public bool armoredUnlocked = false;
+    public int morcellAmount = 1000;
 
     private void Start()
     {

@@ -10,7 +10,6 @@ public class TestScript : MonoBehaviour
     public GameObject Ant;
     public int selectedCell;
     public GameObject morcellAmount;
-    public int baseMorcells = 1000;
 
     private void OnEnable()
     {
@@ -34,8 +33,8 @@ public class TestScript : MonoBehaviour
     {
         GameObject currentSlug = Ant.GetComponent<RTSController>().currentSlug;
         currentSlug.GetComponent<SlugWanderAI>().ChangeSlug(selectedCell);
-        baseMorcells = baseMorcells - currentSlug.GetComponent<SlugWanderAI>().currentSlug.unitCost;
-        morcellAmount.GetComponent<TMP_Text>().text = baseMorcells.ToString();
+        GameManager.Instance.morcellAmount = GameManager.Instance.morcellAmount - currentSlug.GetComponent<SlugWanderAI>().currentSlug.unitCost;
+        morcellAmount.GetComponent<TMP_Text>().text = GameManager.Instance.morcellAmount.ToString();
     }
     public void SelectCell(int cell)
     {

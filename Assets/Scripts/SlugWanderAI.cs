@@ -90,7 +90,7 @@ public class SlugWanderAI : MonoBehaviour
             waitTimer -= Time.deltaTime;
             return;
         }
-        slugAgent.SetDestination(RandomNavSphere(transform.position, 10.0f, floorMask));
+        slugAgent.SetDestination(RandomNavSphere(transform.position, Random.Range(9f, 15f), floorMask));
         curStates = AIStates.Wandering;
     }
 
@@ -99,7 +99,7 @@ public class SlugWanderAI : MonoBehaviour
         if (slugAgent.pathStatus != NavMeshPathStatus.PathComplete)
             return;
 
-        waitTimer = Random.Range(1.0f, 4.0f);
+        waitTimer = Random.Range(1f, 4f);
         curStates = AIStates.Idle;
     }
 
