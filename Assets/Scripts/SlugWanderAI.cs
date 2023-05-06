@@ -51,6 +51,8 @@ public class SlugWanderAI : MonoBehaviour
 
     private bool hasTarget = false;
 
+    public bool cancelled = false;
+
     private void Start()
     {
         slugAgent = GetComponent<NavMeshAgent>();
@@ -209,11 +211,17 @@ public class SlugWanderAI : MonoBehaviour
 
     public void ChangeSlug(int slugType)
     {
-        if (slugTypeChosen || GameManager.Instance.morcellAmount < currentSlug.unitCost)
+        if (slugTypeChosen)
         {
             return;
         }
         currentSlug = slugs[slugType];
+        if (GameManager.Instance.morcellAmount < currentSlug.unitCost)
+        {
+            currentSlug = slugs[0];
+            cancelled = true;
+            return;
+        }
         currentMaterial = slugGlows[slugType];
         slugInternal.GetComponent<MeshRenderer>().material = currentMaterial;
         Debug.Log(currentSlug.slugType);

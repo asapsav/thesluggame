@@ -38,6 +38,11 @@ public class TestScript : MonoBehaviour
             return;
         }
         currentSlug.GetComponent<SlugWanderAI>().ChangeSlug(selectedCell);
+        if (currentSlug.GetComponent<SlugWanderAI>().cancelled)
+        {
+            currentSlug.GetComponent<SlugWanderAI>().cancelled = false;
+            return;
+        }
         if (!currentSlug.GetComponent<SlugWanderAI>().slugTypeChosen)
         {
             GameManager.Instance.morcellAmount = GameManager.Instance.morcellAmount - currentSlug.GetComponent<SlugWanderAI>().currentSlug.unitCost;

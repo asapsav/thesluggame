@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return _instance; } }
 
     [SerializeField] private TMP_Text timer;
+    [SerializeField] private TMP_Text morcellCount;
     private float countdownTimer = 150f;
 
     //Stuff for spawning enemies
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        morcellCount.text = "Morcell: " + morcellAmount;
         if (gameOver)
         {
             return;
