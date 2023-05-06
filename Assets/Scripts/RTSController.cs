@@ -15,23 +15,19 @@ public class RTSController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1) && !isDisabled)
+        if (Input.GetMouseButtonDown(0) && !isDisabled)
         {
             Ray movePos = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(movePos, out var hitInfo))
             {
                 antAgent.SetDestination(hitInfo.point);
+                if (hitInfo.transform.CompareTag("Slug"))
+                {
+                    currentSlug = hitInfo.transform.gameObject;
+                    isDisabled = true;
+                    biostaffUI.SetActive(true);
+                }
             }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Slug")
-        {
-            isDisabled = true;
-            biostaffUI.SetActive(true);
-            currentSlug = other.gameObject;
         }
     }
 }

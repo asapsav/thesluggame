@@ -7,6 +7,10 @@ TagManager:
   - Slug
   - Ant
   - VLP1
+  - EnemySlug
+  - RallyPointN
+  - RallyPointS
+  - AntHill
   layers:
   - Default
   - TransparentFX

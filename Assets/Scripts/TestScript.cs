@@ -19,6 +19,7 @@ public class TestScript : MonoBehaviour
             GameObject VLP1 = GameObject.FindGameObjectWithTag("VLP1");
             VLP1.GetComponent<Button>().interactable = true;
         }
+        morcellAmount.GetComponent<TMP_Text>().text = GameManager.Instance.morcellAmount.ToString();
     }
 
     public void CloseUI()
@@ -32,8 +33,16 @@ public class TestScript : MonoBehaviour
     public void InjectSlug()
     {
         GameObject currentSlug = Ant.GetComponent<RTSController>().currentSlug;
+        if (selectedCell == 0)
+        {
+            return;
+        }
         currentSlug.GetComponent<SlugWanderAI>().ChangeSlug(selectedCell);
-        GameManager.Instance.morcellAmount = GameManager.Instance.morcellAmount - currentSlug.GetComponent<SlugWanderAI>().currentSlug.unitCost;
+        if (!currentSlug.GetComponent<SlugWanderAI>().slugTypeChosen)
+        {
+            GameManager.Instance.morcellAmount = GameManager.Instance.morcellAmount - currentSlug.GetComponent<SlugWanderAI>().currentSlug.unitCost;
+        }
+        currentSlug.GetComponent<SlugWanderAI>().slugTypeChosen = true;
         morcellAmount.GetComponent<TMP_Text>().text = GameManager.Instance.morcellAmount.ToString();
     }
     public void SelectCell(int cell)
