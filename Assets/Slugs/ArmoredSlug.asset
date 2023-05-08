@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: ArmoredSlug
   m_EditorClassIdentifier: 
   slugType: Armored Slug
-  health: 50
+  health: 20
   isArmored: 0
   unitCost: 150

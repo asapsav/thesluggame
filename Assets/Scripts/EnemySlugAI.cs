@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class EnemySlugAI : MonoBehaviour
 {
-    public int slugHealth = 10;
+    public int slugHealth = 30;
     
     private NavMeshAgent enemyAgent;
     private Transform target;
